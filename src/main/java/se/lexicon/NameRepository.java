@@ -6,6 +6,8 @@ public class NameRepository {
 
     private static String[] names = new String[0];
 
+    private static String [] last= new String[0];
+
 
     public static int getSize() {
         int size = names.length;
@@ -45,6 +47,11 @@ public class NameRepository {
         return false;
     }
     public static boolean remove(final String fullName){
+        if(NameRepository.names != null){
+            NameRepository.names = null;
+            return true;
+
+        }
 
         return false;
     }
