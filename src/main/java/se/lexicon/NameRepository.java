@@ -3,6 +3,7 @@ package se.lexicon;
 import java.util.Arrays;
 
 public class NameRepository {
+
     private static String[] names = {};
 
     public static int getSize() {
@@ -23,7 +24,7 @@ public class NameRepository {
 
     public static String find(final String fullName) {
         for (int i = 0; i < fullName.length(); i++) {
-
+            System.out.println(fullName);
         }
         return fullName;
     }
