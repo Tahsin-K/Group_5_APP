@@ -20,5 +20,32 @@ public class NameRepository {
         // todo: tesfaldet
     }
 
+    public static String[] findAll() {
 
+        return new String[0];
+    }
+    public static String find(final String fullName){
+
+        return fullName;
+    }
+    public static boolean add(final String fullName){
+
+        return false;
+    }
+    public static String[] findByFirstName(final String firstName){
+
+        return new String[0];
+    }
+    public static String[] findByLastName(final String lastName){
+
+        return new String[0];
+    }
+    public static boolean update(final String original, final String updatedName) {
+
+        return false;
+    }
+    public static boolean remove(final String fullName){
+
+        return false;
+    }
 }
