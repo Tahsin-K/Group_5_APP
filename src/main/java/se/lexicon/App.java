@@ -4,19 +4,13 @@ import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
+        String[] family = NameRepository.findAll();
+        System.out.println(Arrays.toString(family));
 
-            System.out.println(NameRepository.getSize());
-            System.out.println((NameRepository.setNames(new String[]{"anna", "bally", "cella", "delta","mio vera"})));
+        String[] firstNameTanzeem = NameRepository.findByFirstName("Tanzeem");
+        System.out.println(Arrays.toString(firstNameTanzeem));
 
-            System.out.println(Arrays.toString(names));
-            System.out.println(getSize());
-
-            System.out.println(Arrays.toString(findAll()));
-
-            clear();
-            System.out.println(getSize());
-        }
-
-
-
+        String[] lastNameTanzeem = NameRepository.findByLastName("Tanzeem");
+        System.out.println(Arrays.toString(lastNameTanzeem));
+    }
 }

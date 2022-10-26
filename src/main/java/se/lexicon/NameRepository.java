@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class NameRepository {
 
-    private static String[] names = {};
+    private static String[] names = { "Tanzeem Ahmed" , "Tanzeem Hussain" , "Nusayba Tanzeem" , "Ammaara Tanzeem" , "Lubna Farheen" };
 
     public static int getSize() {
         return names.length;
@@ -23,22 +23,38 @@ public class NameRepository {
     }
 
     public static String find(final String fullName) {
-        for (int i = 0; i < fullName.length(); i++) {
-            System.out.println(fullName);
+        for (String name : names) {
+            if (name.equalsIgnoreCase(fullName)) {
+                return name;
+            }
         }
-        return fullName;
+        return null;
     }
 
     public static boolean add(final String fullName) {
+
         return false;
     }
 
+
     public static String[] findByFirstName(final String firstName) {
-        return new String[0];
+        String[] temp = {};
+        for (String name : names) {
+            if (getFirstName(name).equalsIgnoreCase(firstName)) {
+                temp = addToArray(temp , name);
+            }
+        }
+        return temp;
     }
 
     public static String[] findByLastName(final String lastName) {
-        return new String[0];
+        String[] temp = {};
+        for (String name : names) {
+            if (getLastName(name).equalsIgnoreCase(lastName)) {
+                temp = addToArray(temp , name);
+            }
+        }
+        return temp;
     }
 
     public static boolean update(final String original , final String updatedName) {
@@ -47,5 +63,19 @@ public class NameRepository {
 
     public static boolean remove(final String fullName) {
         return false;
+    }
+
+    private static String getFirstName(String name) {
+        return name.split(" ")[0];
+    }
+
+    private static String getLastName(String name) {
+        return name.split(" ")[1];
+    }
+
+    private static String[] addToArray(String[] array , String name) {
+        array = Arrays.copyOf(array , array.length + 1);
+        array[array.length - 1] = name;
+        return array;
     }
 }
