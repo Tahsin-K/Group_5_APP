@@ -9,7 +9,7 @@ public class App {
         NameRepository.setNames(names);
         System.out.println(Arrays.toString(names));
         System.out.println(NameRepository.getSize());
-        //System.out.println(NameRepository.clear(names));
+        NameRepository.clear();
         System.out.println(NameRepository.find("Arold Welsh"));
         System.out.println(NameRepository.add("Mikel Pete"));
         System.out.println(Arrays.toString(NameRepository.findAll()));

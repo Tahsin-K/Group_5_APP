@@ -1,8 +1,7 @@
 package se.lexicon;
 
-import javax.print.DocFlavor;
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 public class NameRepository {
 
@@ -79,5 +78,8 @@ public class NameRepository {
     public static boolean remove(final String fullName) {
 
 
+     return false;
     }
+
+
 }
