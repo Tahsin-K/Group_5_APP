@@ -1,8 +1,7 @@
 package se.lexicon;
 
-import javax.print.DocFlavor;
+
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class NameRepository {
 
