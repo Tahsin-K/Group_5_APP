@@ -4,16 +4,18 @@ import java.util.ArrayList;
 
 public class App {
     static NameRepository repo = new NameRepository();
+    static NameRepository lastrepo = new NameRepository();
 
 
     public static void main(String[] args) {
         createName();
         findByFirstName();
 
+
     }
 
     public static void createName() {
-        String[] user = new String[]{"anna jao", "tes weld", "fil tek", "arr fan", "tes aron", " tes mel", "tes dan"};
+        String[] user = new String[] {  "Emma Watson" , "Greta Berg" , "Emma Arnold" , "Gunilla Persson" , "Sara Khan" , "James Clear" };
         repo.setNames(user);
 
         for (String st: user) {
@@ -21,18 +23,18 @@ public class App {
         }
     }
     public static void findByFirstName(){
-        String [] test = repo.findByFirstName("tes");
+        String [] test = repo.findByFirstName("Emma");
         int i = 0;
         for(String name: test){
-            System.out.println("name # " + ++i + ". " + name);
+            System.out.println("firstname # " + ++i + ". " + name);
         }
 
     }
     public static void findByLastName(){
-        String [] test2 = repo.findByLastName("tek");
+        String [] test = lastrepo.findByLastName("Greta");
         int i = 0;
-        for (String name: test2){
-            System.out.println("lastname = "+ ++i + "." + name);
+        for (String name: test){
+            System.out.println("lastname = "+ ++i + " ." + name);
         }
 
     }
