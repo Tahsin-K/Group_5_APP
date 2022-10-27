@@ -77,7 +77,7 @@ public class NameRepository {
     }
 
     public static boolean remove(final String fullName) {
-
+       return false;
 
     }
 }
