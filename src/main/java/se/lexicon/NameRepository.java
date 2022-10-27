@@ -1,106 +1,82 @@
 package se.lexicon;
 
-import java.util.ArrayList;
+import javax.print.DocFlavor;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class NameRepository {
 
-    private static String[] _names = {};
+    private static String[] names = new String[0];
 
     public static int getSize() {
-        System.out.println(_names.length);
-
-        return _names.length;
-
-
+        return names.length;
     }
 
     public static void setNames(String[] names) {
-        _names = names;
+        NameRepository.names = names;
     }
 
     public static void clear() {
-        _names = new String [] {};
+        names = new String[]{};
     }
 
-    public static String[] findAllNames() {
+    public static String[] findAll() {
+        return names;
+    }
 
-        return _names;
-    }
-    public static String find(final String fullName){
-     for(String name: _names){
-        if (fullName.equals(name)){
-            return name;
-        }
-     }
-     return "";
-    }
-    public static boolean add(final String fullName){
-      for (String name: _names){
-          if(fullName.equals(name)){
-              return false;
-          }
-      }
-        return true;
-    }
-    public static String[] findByFirstName(final String firstName){
-        String [] theSameFirstname = {};
-        int i = 0;
-        for (String name: _names){
-            String [] splitName = name.split(" ");
-            if(splitName[0].equals(firstName)){
-                i++;
-                String [] temp = new String [i];
-                for(int j=0; j<i-1; j++){
-                    if(theSameFirstname.length != 0) {
-                        temp[j] = theSameFirstname[j];
-                    }
-                }
-                temp[i-1] = name;
-                theSameFirstname = new String [i];
-                for(int j=0; j<i; j++){
-                    theSameFirstname[j] = temp[j];
-                }
+    public static String find(final String fullName) {
+        for (String name : names) {
+            if(name.equalsIgnoreCase(fullName)){
+                return name;
             }
         }
-        return theSameFirstname;
+        return "NULL";
     }
-    public static String[] findByLastName(final String lastName){
-        String [] theSamelastName = {};
-        int i = 0;
-        for (String name: _names){
-            String [] splitName = name.split(" ");
-            if(splitName[1].equals(lastName)){
-                i++;
-                String [] temp = new String [i];
-                for(int j=0; j<i-1; j++){
-                    if(theSamelastName.length != 0) {
-                        temp[j] = theSamelastName[j];
-                    }
-                }
-                temp[i-1] = name;
-                theSamelastName = new String [i];
-                for(int j=1; j<i; j++){
-                    theSamelastName[j] = temp[j];
-                }
+
+    public static boolean add(final String fullName) {
+        //add new name to array
+        String[] newArr = new String[0];
+        for(String name : names ){
+            if(name.equalsIgnoreCase(fullName)){
+                return false;
+            }else{
+                newArr = Arrays.copyOf(names, names.length+1);
+                newArr[newArr.length-1] = fullName;
             }
         }
-        return theSamelastName;
-    }
-
-    public static boolean update(final String original, final String updatedName) {
-        if( updatedName.equals(_names)){
-            return false;
-        }
-
+        names = newArr;
         return true;
     }
-    public static boolean remove(final String fullName){
-       /* if(fullName != null){
-            _names= null;
-            return true;
 
+
+    public static String[] findByFirstName(final String firstName) {
+        String [] filteredNames = new String [0];
+        for (String newName:names){
+            if(newName.split(" ")[0].equalsIgnoreCase(firstName)){
+                 filteredNames = Arrays.copyOf(filteredNames, filteredNames.length+1);
+                 filteredNames[filteredNames.length-1] = newName;
+            }
         }
-*/
+        return filteredNames;
+    }
+
+
+    public static String[] findByLastName(final String lastName) {
+        String [] searchedNames = new String[0];
+        for (String name:names){
+            if(name.split(" ")[1].equalsIgnoreCase(lastName)){
+                searchedNames = Arrays.copyOf(searchedNames, searchedNames.length+1);
+                searchedNames[searchedNames.length-1] = name;
+            }
+        }
+        return searchedNames;
+    }
+
+    public static boolean update(final String original , final String updatedName) {
+        return false;
+    }
+
+    public static boolean remove(final String fullName) {
         return false;
     }
 }
