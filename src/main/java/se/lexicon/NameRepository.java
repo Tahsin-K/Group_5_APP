@@ -1,10 +1,12 @@
 package se.lexicon;
 
+import javax.print.DocFlavor;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class NameRepository {
 
-    private static String[] names = { "Tanzeem Ahmed" , "Tanzeem Hussain" , "Nusayba Tanzeem" , "Ammaara Tanzeem" , "Lubna Farheen" };
+    private static String[] names = new String[0];
 
     public static int getSize() {
         return names.length;
@@ -24,11 +26,11 @@ public class NameRepository {
 
     public static String find(final String fullName) {
         for (String name : names) {
-            if (name.equalsIgnoreCase(fullName)) {
+            if(name.equalsIgnoreCase(fullName)){
                 return name;
             }
         }
-        return null;
+        return "NULL";
     }
 
     public static boolean add(final String fullName) {
@@ -46,6 +48,7 @@ public class NameRepository {
         return true;
     }
 
+
     public static String[] findByFirstName(final String firstName) {
         String [] filteredNames = new String [0];
         for (String newName:names){
@@ -56,6 +59,7 @@ public class NameRepository {
         }
         return filteredNames;
     }
+
 
     public static String[] findByLastName(final String lastName) {
         String [] searchedNames = new String[0];
@@ -73,6 +77,7 @@ public class NameRepository {
     }
 
     public static boolean remove(final String fullName) {
-        return false;
+
+
     }
 }
