@@ -32,29 +32,40 @@ public class NameRepository {
     }
 
     public static boolean add(final String fullName) {
-
-        return false;
-    }
-
-
-    public static String[] findByFirstName(final String firstName) {
-        String[] temp = {};
-        for (String name : names) {
-            if (getFirstName(name).equalsIgnoreCase(firstName)) {
-                temp = addToArray(temp , name);
+        //add new name to array
+        String[] newArr = new String[0];
+        for(String name : names ){
+            if(name.equalsIgnoreCase(fullName)){
+                return false;
+            }else{
+                newArr = Arrays.copyOf(names, names.length+1);
+                newArr[newArr.length-1] = fullName;
             }
         }
-        return temp;
+        names = newArr;
+        return true;
+    }
+
+    public static String[] findByFirstName(final String firstName) {
+        String [] filteredNames = new String [0];
+        for (String newName:names){
+            if(newName.split(" ")[0].equalsIgnoreCase(firstName)){
+                 filteredNames = Arrays.copyOf(filteredNames, filteredNames.length+1);
+                 filteredNames[filteredNames.length-1] = newName;
+            }
+        }
+        return filteredNames;
     }
 
     public static String[] findByLastName(final String lastName) {
-        String[] temp = {};
-        for (String name : names) {
-            if (getLastName(name).equalsIgnoreCase(lastName)) {
-                temp = addToArray(temp , name);
+        String [] searchedNames = new String[0];
+        for (String name:names){
+            if(name.split(" ")[1].equalsIgnoreCase(lastName)){
+                searchedNames = Arrays.copyOf(searchedNames, searchedNames.length+1);
+                searchedNames[searchedNames.length-1] = name;
             }
         }
-        return temp;
+        return searchedNames;
     }
 
     public static boolean update(final String original , final String updatedName) {
@@ -63,19 +74,5 @@ public class NameRepository {
 
     public static boolean remove(final String fullName) {
         return false;
-    }
-
-    private static String getFirstName(String name) {
-        return name.split(" ")[0];
-    }
-
-    private static String getLastName(String name) {
-        return name.split(" ")[1];
-    }
-
-    private static String[] addToArray(String[] array , String name) {
-        array = Arrays.copyOf(array , array.length + 1);
-        array[array.length - 1] = name;
-        return array;
     }
 }
